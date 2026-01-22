@@ -9,6 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
+    "lottie-react": "^2.4.1",
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
