@@ -1,13 +1,60 @@
-// app/about/page.tsx
+"use client";
+
 import Hero3D from "@/components/Hero3D";
+import ImageStripSlider from "@/components/ImageStripSlider";
 import React from "react";
+import { motion } from "framer-motion";
+import {
+  FaAmazon,
+  FaApple,
+  FaGoogle,
+  FaMicrosoft,
+  FaSpotify,
+} from "react-icons/fa";
+
+/* ------------------ Animations ------------------ */
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const fade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+/* ------------------------------------------------ */
 
 const AboutPage = () => {
+  const companies = [
+    { icon: FaGoogle, name: "Google" },
+    { icon: FaAmazon, name: "Amazon" },
+    { icon: FaMicrosoft, name: "Microsoft" },
+    { icon: FaApple, name: "Apple" },
+    { icon: FaGoogle, name: "Meta" },
+    { icon: FaSpotify, name: "Spotify" },
+    { icon: FaAmazon, name: "Adobe" },
+  ];
+
   return (
     <main className="bg-[#0b1220] text-white">
+ <div className="absolute top-[-100px] right-[-150px] w-[400px] h-[400px] bg-cyan-500/50 blur-[100px] rounded-full pointer-events-none" />
 
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-6 py-28 text-center">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative max-w-7xl mx-auto px-6 py-28 text-center"
+      >
         
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
           About <span className="text-cyan-400">Us</span>
@@ -21,10 +68,44 @@ const AboutPage = () => {
             Get Free Consultation
           </button>
         </div>
-      </section>
- 
+      </motion.section>
+
+      {/* Logos Marquee */}
+      <motion.section
+        variants={fade}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-6 px-50 bg-[#0b1220] overflow-hidden"
+      >
+        <div className="w-full overflow-hidden">
+          <div className="marquee gap-20 px-10 items-center">
+            {[...companies, ...companies].map((company, i) => {
+              const Icon = company.icon;
+              return (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 text-white/70 hover:text-cyan-400 transition"
+                >
+                  <Icon size={36} />
+                  <span className="text-xl font-semibold">{company.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
+
       {/* Performance Marketing Agency */}
-      <section className="max-w-7xl mx-auto px-6 py-20 text-center">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="max-w-7xl mx-auto px-6 py-20 text-center"
+      >
         <p className="text-cyan-400 font-semibold uppercase tracking-widest mb-4">
           Performance Marketing Agency
         </p>
@@ -34,11 +115,17 @@ const AboutPage = () => {
         <p className="text-xl text-white/80 max-w-3xl mx-auto">
           We don’t just execute. We partner. We plan. We perform.
         </p>
-      </section>
+      </motion.section>
 
       {/* Your Growth Is Our Business */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-center">
-        <div>
+      <motion.section
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-center"
+      >
+        <motion.div variants={fadeUp} transition={{ duration: 0.6 }}>
           <h3 className="text-4xl font-bold mb-6">
             Your Growth Is Our Business
           </h3>
@@ -57,15 +144,29 @@ const AboutPage = () => {
             <strong> MENA Search Awards</strong>, recognizing our ROI-first,
             outcomes-driven approach.
           </p>
-        </div>
-        <div className="h-[420px] rounded-2xl border border-white/10 flex items-center justify-center text-white/40">
-          Highlights Image
-        </div>
-      </section>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="h-[410px] rounded-2xl border border-white/10 flex items-center justify-center text-white/40"
+        >
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="" />
+        </motion.div>
+      </motion.section>
 
       {/* Built for Performance */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h3 className="text-4xl font-bold mb-6">Built for Performance from Day One</h3>
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="max-w-7xl mx-auto px-6 py-20"
+      >
+        <h3 className="text-4xl font-bold mb-6">
+          Built for Performance from Day One
+        </h3>
         <p className="text-white/80 max-w-4xl leading-relaxed mb-6">
           Most agencies chase metrics. We’ve always chased outcomes.
           From day one, our goal was to move beyond vendor-style service delivery.
@@ -76,56 +177,70 @@ const AboutPage = () => {
           “We’re not in the business of impressions and clicks.
           We’re in the business of impact.”
         </blockquote>
-      </section>
+      </motion.section>
 
-      {/* Performance Partner */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      {/* Performance Partner Cards */}
+      <motion.section
+        className="max-w-7xl mx-auto px-6 py-24"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <h3 className="text-4xl font-bold mb-14">
           What Being a <span className="text-cyan-400">Performance Partner</span> Means
         </h3>
+
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="border border-white/10 rounded-xl p-8">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              Outcome-First Mindset
-            </h4>
-            <p className="text-white/80">
-              Every campaign — SEO, paid media, or content — is tied to
-              real business KPIs like leads, revenue, and lifetime value.
-            </p>
-          </div>
-          <div className="border border-white/10 rounded-xl p-8">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              Full-Funnel Visibility
-            </h4>
-            <p className="text-white/80">
-              We go beyond lead generation. We optimize the entire funnel —
-              sales enablement, nurturing flows, retention, and growth.
-            </p>
-          </div>
-          <div className="border border-white/10 rounded-xl p-8">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              Data-Led Experimentation
-            </h4>
-            <p className="text-white/80">
-              We test, measure, and refine continuously.
-              Performance is built through analytics, iteration, and insight.
-            </p>
-          </div>
-          <div className="border border-white/10 rounded-xl p-8">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              Strategy, Not Just Execution
-            </h4>
-            <p className="text-white/80">
-              We don’t separate strategy from delivery.
-              Sustainable performance lives where both overlap.
-            </p>
-          </div>
+          {[
+            {
+              title: "Outcome-First Mindset",
+              desc:
+                "Every campaign — SEO, paid media, or content — is tied to real business KPIs like leads, revenue, and lifetime value.",
+            },
+            {
+              title: "Full-Funnel Visibility",
+              desc:
+                "We go beyond lead generation. We optimize the entire funnel — sales enablement, nurturing flows, retention, and growth.",
+            },
+            {
+              title: "Data-Led Experimentation",
+              desc:
+                "We test, measure, and refine continuously. Performance is built through analytics, iteration, and insight.",
+            },
+            {
+              title: "Strategy, Not Just Execution",
+              desc:
+                "We don’t separate strategy from delivery. Sustainable performance lives where both overlap.",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className="border border-white/10 rounded-xl p-8"
+            >
+              <h4 className="text-2xl font-semibold text-white mb-3">
+                {item.title}
+              </h4>
+              <p className="text-white/80">{item.desc}</p>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
+
+      <ImageStripSlider />
 
       {/* Clients */}
-      <section className="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h3 className="text-3xl font-bold mb-10">Trusted by Growing Brands</h3>
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-6 py-20 text-center"
+      >
+        <h3 className="text-3xl font-bold mb-10">
+          Trusted by Growing Brands
+        </h3>
         <div className="flex flex-wrap justify-center gap-8 text-white/60 font-semibold">
           <span>Client Four</span>
           <span>Client Five</span>
@@ -134,38 +249,51 @@ const AboutPage = () => {
           <span>Client Nine</span>
           <span>Client Three</span>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats */}
-      <section className="max-w-7xl mx-auto px-6 py-20 text-center">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-6 py-20 text-center"
+      >
         <h3 className="text-5xl font-bold text-cyan-400 mb-4">300+</h3>
         <p className="text-xl text-white/80">Happy Customers</p>
-      </section>
+      </motion.section>
 
       {/* Blogs */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-6 py-24"
+      >
         <h3 className="text-4xl font-bold text-white mb-12">
           Insights & Blogs
         </h3>
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="border border-white/10 rounded-xl p-8 hover:border-cyan-400 transition">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              Branded vs Organic Search: What Matters More in AI Search?
-            </h4>
-            <button className="text-cyan-400 font-semibold hover:underline">
-              Read More →
-            </button>
-          </div>
-          <div className="border border-white/10 rounded-xl p-8 hover:border-cyan-400 transition">
-            <h4 className="text-2xl font-semibold text-white mb-3">
-              CRO Trust Signals: 8 Ways to Convert Browsers Into Buyers
-            </h4>
-            <button className="text-cyan-400 font-semibold hover:underline">
-              Read More →
-            </button>
-          </div>
+          {[
+            "Branded vs Organic Search: What Matters More in AI Search?",
+            "CRO Trust Signals: 8 Ways to Convert Browsers Into Buyers",
+          ].map((title, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -6 }}
+              className="border border-white/10 rounded-xl p-8 hover:border-cyan-400 transition"
+            >
+              <h4 className="text-2xl font-semibold text-white mb-3">
+                {title}
+              </h4>
+              <button className="text-cyan-400 font-semibold hover:underline">
+                Read More →
+              </button>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
     </main>
   );
