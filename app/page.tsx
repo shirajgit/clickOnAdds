@@ -1,4 +1,10 @@
+import AboutUs from "@/components/About";
+import WhyChooseWisoft from "@/components/Comp";
+import FAQSection from "@/components/FAQSection";
+import Hero3D from "@/components/Hero3D";
 import Navbar from "@/components/Navbar";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
+import Image from "next/image";
 import {
   FaGoogle,
   FaAmazon,
@@ -22,14 +28,28 @@ export default function Home() {
     { icon: FaAmazon,name: "Adobe" },
   ];
 
+  const comp = [{name:"EXPRIANCE | "} , {name: "CREATIVITY | "} ,{name:"LEARING |"}]
+
   return (
     <div className="relative min-h-screen bg-[#0b1220] text-white">
   
 
       <main className="relative z-10">
         <section className="relative">
+
            <div className=" flex gap-10">
-                <div className="relative max-w-7xl mx-auto px-25 py-20 text-centr">
+           
+           <div
+             className="absolute flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+               w-[600px] h-[600px]
+               bg-cyan-400/10 blur-[140px]
+               pointer-events-none"
+                 >
+                  <Hero3D></Hero3D>
+
+                </div>
+
+                <div className="relative  max-w-7xl mx-auto px-25 py-20 text-centr">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               Dynamic Digital <br /> Marketing Company <br />
               <span className="text-cyan-400">You Need to Succeed</span>
@@ -57,6 +77,7 @@ export default function Home() {
               </a>
             </div>
           </div>
+          
           <div> 
 
 
@@ -96,6 +117,8 @@ Worldwide
             </div>
       
         </section>
+
+        
        <section className="py-16 bg-[#0b1220] overflow-hidden">
       
       <div className="w-full overflow-hidden">
@@ -303,11 +326,75 @@ Worldwide
   </div>
 </section>
 
-
-
-
-       
+<WhyChooseWisoft></WhyChooseWisoft>
+ <TestimonialsSlider />
         
+     <AboutUs></AboutUs>
+<section className="py-  bg-[#03040a] overflow-hidden">
+      
+      <div className="w-full  overflow-hidden">
+        <div className="marquee gap-20 px-1 items-center">
+          
+          {[...comp, ...comp].map((company, i) => {
+           
+            return (
+              <div
+                key={i}
+                className="flex items-center gap-3 text-white/70 hover:text-cyan-400 transition"
+              >
+              
+                <span className=" text-5xl lg:text-[15rem] 9xl font-semibold">
+                  {company.name}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+       
+           <section
+      className="
+        relative w-full min-h-[90vh]
+        flex items-center justify-center
+        bg-[#05060d]
+        overflow-hidden py-90
+      "
+      style={{
+        backgroundImage: "url('/clickonadd.png')", // your illustration
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05060d]/90 via-[#05060d]/70 to-[#05060d]/95" />
+
+      {/* Content */}
+      <div className="relative z-0 text-center  ">
+        <h1 className="text-4xl md:text-6xl font-light text-white leading-tight">
+          Let’s make it great
+          <br />
+          together!
+        </h1>
+
+        <div className="mt-10">
+          <button
+            className="
+              bg-sky-500 hover:bg-sky-600
+              text-white font-medium
+              px-8 py-3 rounded-md
+              transition-all duration-300
+              shadow-lg shadow-sky-500/20
+            "
+          >
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </section>
+          
+          <FAQSection></FAQSection>
       </main>
     </div>
   );

@@ -34,7 +34,7 @@ border-b border-white/5
             <Link href="/" className="hover:text-indigo-400 transition">Home</Link>
             <Link href="/about" className="hover:text-indigo-400 transition">About</Link>
             <Link href="/services" className="hover:text-indigo-400 transition">Services</Link>
-            <Link href="/portfolio" className="hover:text-indigo-400 transition">ChatBot</Link>
+            <Link href="/chatbot" className="hover:text-indigo-400 transition">ChatBot</Link>
             <Link href="/contact" className="hover:text-indigo-400 transition">Contact</Link>
           </nav>
 

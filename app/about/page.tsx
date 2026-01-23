@@ -1,4 +1,5 @@
 // app/about/page.tsx
+import Hero3D from "@/components/Hero3D";
 import React from "react";
 
 const AboutPage = () => {
@@ -7,6 +8,7 @@ const AboutPage = () => {
 
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-6 py-28 text-center">
+        
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
           About <span className="text-cyan-400">Us</span>
         </h1>
@@ -20,7 +22,7 @@ const AboutPage = () => {
           </button>
         </div>
       </section>
-
+ 
       {/* Performance Marketing Agency */}
       <section className="max-w-7xl mx-auto px-6 py-20 text-center">
         <p className="text-cyan-400 font-semibold uppercase tracking-widest mb-4">

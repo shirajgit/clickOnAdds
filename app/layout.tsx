@@ -31,15 +31,15 @@ export default function RootLayout({
       >
         <Navbar></Navbar>
         {/* Wrapper for content + top gradient */}
-        <div className="relative min-h-screen overflow-hidden">
+         <div className="relative min-h-screen overflow-hidden">
           {/* Top Semi-Sphere Cyan Gradient */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2
+          {/* <div className="absolute top-0 left-1/2 transform -translate-x-1/2
                           w-[200%] h-[30vh]
                           rounded-b-full
                           bg-cyan-400/50
                           blur-3xl
                           pointer-events-none
-                          z-0" />
+                          z-0" /> */}
 
           {/* Actual page content */}
           <div className="relative z-10">

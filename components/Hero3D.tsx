@@ -21,7 +21,7 @@ export default function Hero3D() {
       </div>
 
       {/* Layer 3: Small accent glow */}
-      <div className="absolute -top-8 w-36 h-36 md:w-56 md:h-56
+      <div className="absolute -top-8 w-60 h-36 md:w-56 md:h-56
                       rounded-full
                       bg-gradient-to-br from-purple-400 via-pink-400 to-cyan-400
                       opacity-20 blur-xl
