@@ -49,8 +49,8 @@ export default function Home() {
 
                 </div>
 
-                <div className="relative  max-w-7xl mx-auto px-25 py-20 text-centr">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                <div className="relative   max-w-7xl mx-auto px-5  lg:px-25  py-5 lg:py-20 text-centr">
+            <h1 className="text-3xl md:text-6xl font-bold leading-tight">
               Dynamic Digital <br /> Marketing Company <br />
               <span className="text-cyan-400">You Need to Succeed</span>
             </h1>
@@ -61,7 +61,7 @@ export default function Home() {
               designed to  <br />lower your acquisition costs.
             </p>
 
-            <div className="mt-10 flex   gap-4 flex-wrap">
+            <div className="mt-10 flex  gap-4 flex-wrap">
               <a
                 href="/contact"
                 className="px-6 py-3 rounded-xl bg-cyan-500 text-white font-medium shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
@@ -78,11 +78,8 @@ export default function Home() {
             </div>
           </div>
           
-          <div> 
-
-
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-30">
+     
+      <div className=" hidden   lg:grid  grid-cols-1 sm:grid-cols-2 gap-6 p-30 ">
     {/* Box 1 */}
     <div className="  p-6 h-50 w-50 rounded-xl shadow-lg hover:scale-105 transition transform">
      
@@ -114,7 +111,7 @@ Worldwide
  
           </div>
            </div>
-            </div>
+         
       
         </section>
 
