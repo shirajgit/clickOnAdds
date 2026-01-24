@@ -33,7 +33,7 @@ border-b border-white/5
           <nav className="hidden md:flex justify-self-center gap-15 text-lg text-gray-300 font-medium">
             <Link href="/" className="hover:text-indigo-400 transition">Home</Link>
             <Link href="/about" className="hover:text-indigo-400 transition">About</Link>
-            <Link href="/servicess" className="hover:text-indigo-400 transition">Services</Link>
+            <Link href="/services" className="hover:text-indigo-400 transition">Services</Link>
             <Link href="/contact-us" className="hover:text-indigo-400 transition">Contact</Link>
           </nav>
 
