@@ -307,11 +307,11 @@ export default function ChatWidget({
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={logoUrl} alt={brand} className="h-8 w-8 object-cover rounded-lg" />
+                <img src={"/clock-logo.png"} alt={brand} className="h-8 w-8 object-cover rounded-lg" />
               </div>
 
               <div className="min-w-0">
-                <div className="font-semibold leading-tight truncate">{brand}</div>
+                <div className="font-semibold leading-tight truncate">ClickOnAdzz.</div>
                 <div className="text-xs text-white/80">Typically replies in a few minutes</div>
               </div>
 
