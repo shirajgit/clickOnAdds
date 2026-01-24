@@ -5,13 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaTimes, FaPaperPlane } from "react-icons/fa";
 
-type Step =
-  | "pickService"
-  | "askName"
-  | "askEmail"
-  | "askPhone"
-  | "askMessage"
-  | "success";
+type Step = "pickService" | "askName" | "askEmail" | "askPhone" | "askMessage" | "success";
 
 type ChatWidgetProps = {
   brand?: string;
@@ -32,8 +26,8 @@ const pop = {
 };
 
 const bounceIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1 },
+  hidden: { opacity: 0, scale: 0.9, y: 6 },
+  visible: { opacity: 1, scale: 1, y: 0 },
 };
 
 function clsx(...x: (string | false | undefined)[]) {
@@ -117,12 +111,9 @@ export default function ChatWidget({
 
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  const safeServices = useMemo(
-    () => services.filter(Boolean).slice(0, 10),
-    [services]
-  );
+  const safeServices = useMemo(() => services.filter(Boolean).slice(0, 10), [services]);
 
-  // ✅ Open from FloatingActions
+  // ✅ open / close events from anywhere
   useEffect(() => {
     const openHandler = () => setOpen(true);
     const closeHandler = () => setOpen(false);
@@ -135,6 +126,23 @@ export default function ChatWidget({
       window.removeEventListener("close-chat", closeHandler);
     };
   }, []);
+
+  // ✅ ESC to close
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  // ✅ overlap fix: when chat opens, hide floating actions (by adding a body class)
+  useEffect(() => {
+    if (open) document.documentElement.classList.add("chat-open");
+    else document.documentElement.classList.remove("chat-open");
+    return () => document.documentElement.classList.remove("chat-open");
+  }, [open]);
 
   const scrollBottom = () => {
     requestAnimationFrame(() => {
