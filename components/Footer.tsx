@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-
+ 
 const Footer = () => {
   return (
     <footer className="relative bg-[#03040a] text-white py-20 overflow-hidden">
@@ -23,39 +23,69 @@ const Footer = () => {
           <p className="text-white/70 leading-relaxed">
             Performance marketing agency helping brands grow with strategy, data, and creativity.
           </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-6">
-            {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-cyan-400/20
-                           text-white hover:text-cyan-400 transition duration-300
-                           shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
-              >
-                <Icon />
-              </a>
-            ))}
-          </div>
+<div className="flex gap-4 mt-6">
+  {[
+    {
+      href: "https://www.facebook.com/people/Clickonadzz/61584464079686/",
+      label: "Facebook",
+      Icon: FaFacebookF,
+    },
+    {
+      href: "https://twitter.com/",
+      label: "Twitter",
+      Icon: FaTwitter,
+    },
+    {
+      href: "https://www.linkedin.com/company/in/clickonadzz",
+      label: "LinkedIn",
+      Icon: FaLinkedinIn,
+    },
+    {
+      href: "https://www.instagram.com/clickonadzz/",
+      label: "Instagram",
+      Icon: FaInstagram,
+    },
+  ].map(({ href, label, Icon }, i) => (
+    <a
+      key={i}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="p-3 rounded-full bg-white/5 hover:bg-cyan-400/20
+                 text-white hover:text-cyan-400 transition duration-300
+                 shadow-[0_0_15px_rgba(34,211,238,0.3)]
+                 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
+    >
+      <Icon />
+    </a>
+  ))}
+</div>
         </div>
 
-        {/* Navigation Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
-          <ul className="space-y-2 text-white/70">
-            {["Home", "About Us", "Services", "Our Work", "Contact"].map((link, i) => (
-              <li key={i}>
-                <a
-                  href="#"
-                  className="hover:text-cyan-400 transition-all duration-300"
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+
+{/* Navigation Links */} 
+    <div>
+  <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+  <ul className="space-y-2 text-white/70">
+    {[
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Contact", href: "/contact" },
+    ].map((link, i) => (
+      <li key={i}>
+        <Link
+          href={link.href}
+          className="inline-block hover:text-cyan-400 transition-all duration-300 hover:translate-x-1"
+        >
+          {link.label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
 
         {/* Newsletter / Contact */}
         <div>
@@ -87,7 +117,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <p className="text-center text-white/50 mt-6 relative z-10">
-        &copy; {new Date().getFullYear()} Wisoft Solutions. All rights reserved.
+        &copy; {new Date().getFullYear()} ClickOnAddzz. All rights reserved.
       </p>
     </footer>
   );

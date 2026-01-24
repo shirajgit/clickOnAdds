@@ -53,11 +53,11 @@ const WhyChooseWisoft = () => {
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <h2 className="text-7xl md:text-5xl font-bold text-white mb-16 max-w-3xl">
+        <h2 className="text-5xl md:text-7xl font-bold text-white mb-16 max-w-3xl">
           Why Choose <span className="text-cyan-400">  
-             <Link href="/" className="text-7xl font-bold text-white justify-self-start">
+             <Link href="/" className="text-5xl md:text-7xl  font-bold text-white justify-self-start">
              Click<span className="text-cyan-400">On</span>
-             Add<span className="text-cyan-400">s.</span>
+              Ad<span className="text-cyan-400">zz.</span>
           </Link>
             </span> as Your
           <br /> Digital Partner?

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+ 
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -33,10 +35,11 @@ const CTASection = () => {
           >
             +91 91871 54521
           </a>
-
+         <a href="/contact-us">
           <button className="px-8 py-4 rounded-full border border-white/20 hover:border-cyan-400 hover:text-cyan-400 transition">
             Make an enquiry
           </button>
+           </a>
         </div>
       </div>
     </motion.section>

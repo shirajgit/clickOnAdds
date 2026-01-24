@@ -65,7 +65,7 @@ export default function Home() {
 
             <div className="mt-10 flex  gap-4 flex-wrap">
               <a
-                href="/contact"
+                href="/contact-us"
                 className="px-6 py-3 rounded-xl bg-cyan-500 text-white font-medium shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
               >
                 Get Free Consultation
@@ -165,10 +165,13 @@ Worldwide
           Data-driven campaigns designed to increase reach, engagement,
           and conversions.
         </p>
+       <a href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
-          View Project
+          See Our Services
+
         </button>
+        </a>
       </div>
     </div>
 
@@ -187,10 +190,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Strong teamwork and communication to deliver scalable solutions.
         </p>
+        <a href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
-          View Project
+          See Our Services
+
         </button>
+        </a>
       </div>
     </div>
 
@@ -209,10 +215,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Fast, responsive, and scalable websites built with modern tech.
         </p>
+       <a href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
-          View Project
+          See Our Services
+
         </button>
+        </a>
       </div>
     </div>
 
@@ -231,10 +240,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Strategic planning and execution to scale your business faster.
         </p>
+        <a href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
-          View Project
+          See Our Services
+
         </button>
+        </a>
       </div>
     </div>
 
@@ -254,7 +266,7 @@ Worldwide
 
   {/* Section Title */}
   <div className="relative text-center mb-30">
-    <h1 className="absolute inset-0 text-[9rem] font-extrabold tracking-tight
+    <h1 className="absolute inset-0 sm:mt-5 text-[5rem] lg:text-[9rem] font-extrabold tracking-tight
                    text-white/5 select-none">
       SERVICES
     </h1>
@@ -321,7 +333,22 @@ Worldwide
         </p>
       </div>
 
+
     </div>
+    <div className="mt-16 flex text-cnter items-center justify-center">
+  <a
+    href="/services"
+    className="group inline-flex items-center gap-2
+               px-8 py-3 rounded-full
+               border border-cyan-400/40
+               text-cyan-400 font-semibold
+               hover:bg-cyan-400 hover:text-black
+               transition-all duration-300"
+  >
+    Learn More
+    <span className="transition-transform group-hover:translate-x-1">→</span>
+  </a>
+</div>
   </div>
 </section>
 
@@ -378,6 +405,7 @@ Worldwide
         </h1>
 
         <div className="mt-10">
+          <a href="/contact-us">
           <button
             className="
               bg-sky-500 hover:bg-sky-600
@@ -388,7 +416,7 @@ Worldwide
             "
           >
             Contact Us
-          </button>
+          </button></a>
         </div>
       </div>
     </section>

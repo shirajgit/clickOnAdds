@@ -52,7 +52,7 @@ export default function AboutUs() {
 
           <p className="mt-6 text-lg text-white/70 leading-relaxed">
             Trust is the foundation of every successful partnership. For over
-            <span className="text-white font-semibold"> 15 years</span>, we’ve
+            <span className="text-white font-semibold"> 5 years</span>, we’ve
             helped growth-focused businesses take full ownership of results —
             not just reports.
           </p>

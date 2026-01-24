@@ -50,49 +50,45 @@ export default function ContactPage() {
                 Partner with us to turn your business goals into action, unlock smart strategies,
                 and craft a winning roadmap for digital growth!
               </p>
+
+              {/* quick highlights */}
+              <div className="mt-8 grid grid-cols-2 gap-4 max-w-lg">
+                {[
+                  ["24h", "Response time"],
+                  ["300+", "Happy customers"],
+                  ["ROI", "Performance-first"],
+                  ["Full", "Funnel strategy"],
+                ].map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-4"
+                  >
+                    <div className="text-2xl font-extrabold text-cyan-300">{k}</div>
+                    <div className="text-sm text-white/60 mt-1">{v}</div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
-            <div className="relative w-full max-w-xl">
-              {/* Gradient border wrapper */}
-              <div
-                className="relative rounded-[28px] p-[3px]
-                  bg-gradient-to-br
-                  from-white/25 via-cyan-400/50 to-blue-500/30"
-              >
-                <div
-                  className="absolute inset-0 rounded-[28px]
-                    bg-gradient-to-br
-                    from-cyan-400/20 via-transparent to-transparent
-                    opacity-60 blur-xl pointer-events-none"
-                />
+            {/* Right form */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.9, ease: "easeOut", delay: 0.05 }}
+              className="relative w-full max-w-xl"
+            >
+              <ModernContactCard />
 
-                <motion.div
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ duration: 0.9, ease: "easeOut", delay: 0.05 }}
-                  className="lg:flex lg:justify-end"
-                >
-                  <ModernContactCard />
-                </motion.div>
-              </div>
-
-              <div
-                className="pointer-events-none absolute -bottom-10 -right-10
-                  h-[260px] w-[260px]
-                  bg-cyan-400/20 blur-[90px] rounded-full -z-10"
-              />
-
-              <div
-                className="pointer-events-none absolute -inset-8
-                  rounded-[32px]
-                  bg-white/5 blur-[80px] -z-20"
-              />
-            </div>
+              {/* ambient glows */}
+              <div className="pointer-events-none absolute -bottom-10 -right-10 h-[260px] w-[260px] bg-cyan-400/20 blur-[90px] rounded-full -z-10" />
+              <div className="pointer-events-none absolute -inset-10 rounded-[40px] bg-white/5 blur-[100px] -z-20" />
+            </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Locations + map */}
       <section className="relative max-w-7xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
           {/* LEFT – LOCATIONS */}
@@ -121,8 +117,12 @@ export default function ContactPage() {
                 phone: "+1 407 000 0000",
               },
             ].map((loc, i) => (
-              <div
+              <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, ease: "easeOut", delay: i * 0.04 }}
                 className="group rounded-2xl bg-white/[0.03] backdrop-blur-xl
                      border border-white/10 p-6
                      hover:border-cyan-400/40
@@ -140,7 +140,7 @@ export default function ContactPage() {
                     View on Map
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -175,38 +175,46 @@ function ModernContactCard() {
   const [service, setService] = React.useState("");
   const [message, setMessage] = React.useState("");
 
+  const canSubmit =
+    firstName.trim() &&
+    lastName.trim() &&
+    email.trim() &&
+    phone.trim() &&
+    service.trim() &&
+    message.trim();
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!canSubmit || status === "loading") return;
+
     setStatus("loading");
     setErrorMsg("");
 
     try {
-  const res = await fetch("/api/contact", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    firstName,
-    lastName,
-    email,
-    company,
-    phone,
-    service,
-    message,
-  }),
-});
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          company,
+          phone,
+          service,
+          message,
+        }),
+      });
 
-const data = await res.json();
+      const data = await res.json();
 
-if (!res.ok || data?.ok === false) {
-  setStatus("error");
-  setErrorMsg(data?.message || "Failed to send message");
-  return;
-}
+      if (!res.ok || data?.ok === false) {
+        setStatus("error");
+        setErrorMsg(data?.message || "Failed to send message");
+        return;
+      }
 
-setStatus("success");
+      setStatus("success");
 
-
-      // Clear inputs
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -224,29 +232,39 @@ setStatus("success");
 
   return (
     <div className="w-full max-w-xl relative">
-      {/* Animated gradient border */}
+      {/* Animated border wrapper (real animation via background-position) */}
       <motion.div
         className="relative rounded-[28px] p-[1.5px] overflow-hidden"
         style={{
           background:
-            "linear-gradient(120deg, rgba(255,255,255,0.22), rgba(34,211,238,0.55), rgba(59,130,246,0.32), rgba(34,211,238,0.55))",
+            "linear-gradient(120deg, rgba(255,255,255,0.22), rgba(34,211,238,0.65), rgba(59,130,246,0.35), rgba(34,211,238,0.65))",
+          backgroundSize: "240% 240%",
         }}
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
       >
+        {/* subtle inner sheen */}
         <div
           className="pointer-events-none absolute inset-0 opacity-60 blur-2xl"
           style={{
             background:
-              "radial-gradient(circle at 30% 20%, rgba(34,211,238,0.25), transparent 60%)",
+              "radial-gradient(circle at 30% 20%, rgba(34,211,238,0.22), transparent 55%)",
           }}
         />
 
         {/* Card body */}
         <div className="relative rounded-[26px] bg-white/[0.03] backdrop-blur-2xl border border-white/10">
+          {/* top highlight line */}
+          <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
           <div className="p-7 md:p-9">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-semibold">Let’s get in touch</h2>
+              <div>
+                <h2 className="text-xl font-semibold">Let’s get in touch</h2>
+                <p className="text-sm text-white/55 mt-1">
+                  Tell us what you need — we’ll reply within 24 hours.
+                </p>
+              </div>
 
               <AnimatePresence>
                 {status === "success" && (
@@ -256,7 +274,7 @@ setStatus("success");
                     exit={{ opacity: 0, y: -6 }}
                     className="text-sm text-cyan-300 font-semibold"
                   >
-                    Sent successfully ✅
+                    Sent ✅
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -269,7 +287,7 @@ setStatus("success");
               </div>
 
               <GlowInput type="email" placeholder="Enter Your Email" value={email} onChange={setEmail} />
-              <GlowInput placeholder="Enter Your Company" value={company} onChange={setCompany} />
+              <GlowInput placeholder="Enter Your Company (optional)" value={company} onChange={setCompany} />
 
               <div className="flex gap-3">
                 <div className="w-24 shrink-0">
@@ -293,16 +311,22 @@ setStatus("success");
 
               <GlowTextarea placeholder="Tell us about the project" value={message} onChange={setMessage} />
 
-             <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white/70 flex flex-col gap-1">
-  <span>🔒 Your details are safe with us.</span>
-  <span>⚡ Expect a response within <span className="text-cyan-400 font-semibold">24 hours</span>.</span>
-</div>
-
+              <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white/70 flex flex-col gap-1">
+                <span>🔒 Your details are safe with us.</span>
+                <span>
+                  ⚡ Expect a response within{" "}
+                  <span className="text-cyan-400 font-semibold">24 hours</span>.
+                </span>
+              </div>
 
               {status === "error" && (
-                <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200"
+                >
                   {errorMsg}
-                </div>
+                </motion.div>
               )}
 
               <AnimatePresence mode="wait">
@@ -318,7 +342,7 @@ setStatus("success");
                     <motion.span
                       initial={{ scale: 0.6, rotate: -12, opacity: 0 }}
                       animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 16 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 16 }}
                       className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-cyan-400/20"
                     >
                       ✓
@@ -327,9 +351,15 @@ setStatus("success");
                   </motion.div>
                 ) : (
                   <motion.div key="idle" exit={{ opacity: 0, y: -6 }}>
-                    <MagneticButton type="submit" disabled={status === "loading"}>
+                    <MagneticButton type="submit" disabled={!canSubmit || status === "loading"}>
                       {status === "loading" ? "Sending..." : "Submit"}
                     </MagneticButton>
+
+                    {!canSubmit && status !== "loading" ? (
+                      <p className="mt-2 text-xs text-white/45">
+                        Fill required fields to enable submit.
+                      </p>
+                    ) : null}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -338,8 +368,8 @@ setStatus("success");
         </div>
       </motion.div>
 
-      <div className="pointer-events-none absolute -bottom-10 -right-10 h-[260px] w-[260px] bg-cyan-400/20 blur-[90px] rounded-full -z-10" />
-      <div className="pointer-events-none absolute -inset-8 rounded-[32px] bg-white/5 blur-[90px] -z-20" />
+      {/* soft card glow */}
+      <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[36px] bg-cyan-400/10 blur-[80px]" />
     </div>
   );
 }
@@ -385,10 +415,13 @@ function MagneticButton({
       style={{ x: sx, y: sy }}
       whileTap={disabled ? undefined : { scale: 0.98 }}
       disabled={disabled}
-      className={`mt-2 w-full rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition
-                 py-3 font-semibold text-black
-                 shadow-[0_14px_40px_rgba(34,211,238,0.20)]
-                 will-change-transform ${disabled ? "opacity-70 cursor-not-allowed" : ""}`}
+      className={[
+        "mt-2 w-full rounded-2xl py-3 font-semibold text-black will-change-transform transition",
+        "shadow-[0_14px_40px_rgba(34,211,238,0.20)]",
+        disabled
+          ? "opacity-60 cursor-not-allowed bg-cyan-500/70"
+          : "bg-cyan-500 hover:bg-cyan-400",
+      ].join(" ")}
     >
       {children}
     </motion.button>
