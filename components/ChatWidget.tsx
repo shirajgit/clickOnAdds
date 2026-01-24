@@ -5,12 +5,21 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaTimes, FaPaperPlane } from "react-icons/fa";
 
-type Step = "pickService" | "askName" | "askEmail" | "askPhone" | "askMessage" | "success";
+type Step =
+  | "pickService"
+  | "askName"
+  | "askEmail"
+  | "askPhone"
+  | "askMessage"
+  | "success";
 
 type ChatWidgetProps = {
   brand?: string;
   logoUrl?: string;
   services?: string[];
+
+  // ✅ add backend url (optional)
+  backendUrl?: string; // example: "https://your-backend.com" or "" for same domain
 };
 
 type Msg = {
@@ -75,8 +84,8 @@ function Typing() {
 }
 
 export default function ChatWidget({
-  brand = "Wisoft Solutions",
-  logoUrl,
+  brand = "ClickOnAdzz.",
+  logoUrl = "/img1.jpeg",
   services = [
     "SEO Services",
     "Performance Marketing",
@@ -87,6 +96,7 @@ export default function ChatWidget({
     "Branding & Promotions",
     "Other",
   ],
+  backendUrl = "", // ✅ if "", it will use same domain
 }: ChatWidgetProps) {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<Step>("pickService");
@@ -111,7 +121,10 @@ export default function ChatWidget({
 
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  const safeServices = useMemo(() => services.filter(Boolean).slice(0, 10), [services]);
+  const safeServices = useMemo(
+    () => services.filter(Boolean).slice(0, 10),
+    [services]
+  );
 
   // ✅ open / close events from anywhere
   useEffect(() => {
@@ -137,7 +150,7 @@ export default function ChatWidget({
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // ✅ overlap fix: when chat opens, hide floating actions (by adding a body class)
+  // ✅ overlap fix: when chat opens, hide floating actions (by adding a html class)
   useEffect(() => {
     if (open) document.documentElement.classList.add("chat-open");
     else document.documentElement.classList.remove("chat-open");
@@ -225,16 +238,21 @@ export default function ChatWidget({
     if (step === "askMessage") setLead((p) => ({ ...p, message: v }));
   };
 
+  // ✅ send lead to your Next.js API route (which will use Resend)
   const submitLead = async (payload: typeof lead) => {
     setSending(true);
     try {
-      await fetch("/api/lead", {
+      const url = `/api/lead`; //  
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-    } catch {
-      // ignore for now
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data?.ok === false) {
+        throw new Error(data?.message || "Failed to submit");
+      }
     } finally {
       setSending(false);
     }
@@ -258,7 +276,13 @@ export default function ChatWidget({
 
     if (step === "askMessage") {
       await botSay("Submitting…", 450);
-      await submitLead({ ...lead, message: nextValue.trim() });
+
+      try {
+        await submitLead({ ...lead, message: nextValue.trim() });
+      } catch (e: any) {
+        await botSay(`❌ ${e?.message || "Something went wrong. Try again."}`, 350);
+        return;
+      }
     }
 
     await askNext();
@@ -282,12 +306,8 @@ export default function ChatWidget({
           <div className="relative bg-gradient-to-r from-cyan-700 to-blue-600 px-4 py-3 text-white">
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center overflow-hidden">
-                {logoUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={logoUrl} alt={brand} className="h-8 w-8 object-contain" />
-                ) : (
-                  <span className="text-sm font-extrabold">W</span>
-                )}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={logoUrl} alt={brand} className="h-8 w-8 object-cover rounded-lg" />
               </div>
 
               <div className="min-w-0">
@@ -304,8 +324,6 @@ export default function ChatWidget({
                 <FaTimes />
               </button>
             </div>
-
-            <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-10 bg-white/90 rotate-[-6deg]" />
           </div>
 
           {/* Body */}

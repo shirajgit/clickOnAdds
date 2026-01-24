@@ -6,11 +6,11 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "Why are digital marketing services important for my business in Bangalore?",
-    a: "As one of the fastest-growing cities in India, Bangalore offers immense opportunities for businesses. Digital marketing helps you tap into this potential by targeting specific audiences and generating qualified leads. Wisoft Solutions combines AI-powered insights, creative strategies, and real-time data to help businesses like yours grow.",
+    a: "As one of the fastest-growing cities in India, Bangalore offers immense opportunities for businesses. Digital marketing helps you tap into this potential by targeting specific audiences and generating qualified leads. Wisoft Solutionscombines AI-powered insights, creative strategies, and real-time data to help businesses like yours grow.",
   },
   {
     q: "How do I choose the right digital marketing agency in Bangalore?",
-    a: "Look for a digital marketing agency that not only understands your goals but also has a proven track record of delivering measurable results. Wisoft Solutions has worked with industry leaders like Damac, EMAAR, and BITS Pilani to drive meaningful business growth.",
+    a: "Look for a digital marketing agency that not only understands your goals but also has a proven track record of delivering measurable results. Wisoft Solutionshas worked with industry leaders like Damac, EMAAR, and BITS Pilani to drive meaningful business growth.",
   },
   {
     q: "How can digital marketing boost my revenue?",

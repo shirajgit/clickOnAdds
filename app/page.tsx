@@ -16,6 +16,8 @@ import {
 } from "react-icons/fa";
 import { Resend } from "resend";
 
+
+
 export default function Home() {
  const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -152,7 +154,7 @@ Worldwide
     {/* Card 1 */}
     <div className="group relative h-[420px] rounded-2xl overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1556761175-4b46a572b786"
+        src="/Digital Marketing.jpeg"
         alt="Digital Marketing"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
@@ -178,7 +180,7 @@ Worldwide
     {/* Card 2 */}
     <div className="group relative h-[420px] rounded-2xl overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+        src="/Team Collaboration.jpeg"
         alt="Team Collaboration"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
@@ -203,7 +205,7 @@ Worldwide
     {/* Card 3 */}
     <div className="group relative h-[420px] rounded-2xl overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+        src="/web.jpeg"
         alt="Web Development"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
@@ -228,7 +230,7 @@ Worldwide
     {/* Card 4 */}
     <div className="group relative h-[420px] rounded-2xl overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1557804506-669a67965ba0"
+        src="/Business Growth.jpeg"
         alt="Business Growth"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />

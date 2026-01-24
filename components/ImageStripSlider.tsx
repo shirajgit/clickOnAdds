@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const images = [
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-  "https://images.unsplash.com/photo-1556761175-5973dc0f32e7",
-  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+  "/Business Growth.jpeg",
+  "/Digital Marketing.jpeg",
+  "/Team Collaboration.jpeg",
+  "/web.jpeg",
+  "/img1.jpeg",
+  "/img02.jpeg",
 ];
 
 export default function SmoothImageSlider() {

@@ -195,7 +195,7 @@ const AboutPage = () => {
 
           <div className="space-y-4 text-white/70 leading-relaxed text-lg">
             <p>
-              Wisoft Solutions is a digital marketing agency purpose-built for
+              ClickOnAdzz.is a digital marketing agency purpose-built for
               performance. For over <strong className="text-white">15 years</strong>,
               we’ve helped growth-focused SMEs and enterprise teams turn scattered
               digital efforts into structured strategies.
@@ -237,7 +237,7 @@ const AboutPage = () => {
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-blue-500/10 blur-[90px]" />
 
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+            src="/img03.jpeg"
             alt="Team collaboration"
             className="h-[420px] w-full object-cover opacity-90"
           />

@@ -39,3 +39,7 @@ body {
   width: max-content;
   animation: marquee 20s linear infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none !important; }
+}
