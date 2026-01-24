@@ -1,30 +1,31 @@
+"use client";
+
 // components/Footer.tsx
 import Link from "next/link";
 import React from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
- 
+import { motion } from "framer-motion";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const stagger = {
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
 const Footer = () => {
-  return (
-    <footer className="relative bg-[#03040a] text-white py-20 overflow-hidden">
-      {/* Subtle Background Glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                   w-[600px] h-[600px] bg-cyan-400/10 blur-[140px] pointer-events-none"
-      />
+  const year = new Date().getFullYear();
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 relative z-10">
-
-        {/* Logo & About */}
-        <div>
-           <Link href="/" className="text-3xl p-2 font-bold text-white justify-self-start">
-             Click<span className="text-cyan-400">On</span>
-             Add<span className="text-cyan-400">zz.</span>
-          </Link>
-          <p className="text-white/70 leading-relaxed">
-            Performance marketing agency helping brands grow with strategy, data, and creativity.
-          </p>
-<div className="flex gap-4 mt-6">
-  {[
+  const socials = [
     {
       href: "https://www.facebook.com/people/Clickonadzz/61584464079686/",
       label: "Facebook",
@@ -45,80 +46,158 @@ const Footer = () => {
       label: "Instagram",
       Icon: FaInstagram,
     },
-  ].map(({ href, label, Icon }, i) => (
-    <a
-      key={i}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="p-3 rounded-full bg-white/5 hover:bg-cyan-400/20
-                 text-white hover:text-cyan-400 transition duration-300
-                 shadow-[0_0_15px_rgba(34,211,238,0.3)]
-                 hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]"
-    >
-      <Icon />
-    </a>
-  ))}
-</div>
-        </div>
+  ];
 
+  const links = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-{/* Navigation Links */} 
-    <div>
-  <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
-  <ul className="space-y-2 text-white/70">
-    {[
-      { label: "Home", href: "/" },
-      { label: "About Us", href: "/about" },
-      { label: "Services", href: "/services" },
-      { label: "Contact", href: "/contact" },
-    ].map((link, i) => (
-      <li key={i}>
-        <Link
-          href={link.href}
-          className="inline-block hover:text-cyan-400 transition-all duration-300 hover:translate-x-1"
-        >
-          {link.label}
-        </Link>
-      </li>
-    ))}
-  </ul>
-</div>
+  const onSubscribe = (e: React.FormEvent) => {
+    e.preventDefault(); // stops page refresh
+    // TODO: connect your newsletter API here
+    // for now just a placeholder
+    alert("Subscribed ✅ (connect API later)");
+  };
 
-
-        {/* Newsletter / Contact */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-white">Stay Updated</h3>
-          <p className="text-white/70 mb-4">
-            Subscribe to get our latest news and updates directly in your inbox.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="px-4 py-2 rounded-lg bg-white/5 placeholder-white/50 text-white
-                         focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-            />
-            <button
-              type="submit"
-              className="px-6 py-2 rounded-lg bg-cyan-400 text-black font-semibold
-                         hover:scale-105 transition shadow-[0_0_10px_rgba(34,211,238,0.5)]
-                         hover:shadow-[0_0_20px_rgba(34,211,238,0.8)]"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+  return (
+    <footer className="relative bg-[#03040a] text-white overflow-hidden">
+      {/* soft glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] bg-cyan-400/10 blur-[160px]" />
+        <div className="absolute -top-40 right-[-140px] w-[520px] h-[520px] bg-blue-500/10 blur-[170px] rounded-full" />
+        <div className="absolute -bottom-48 left-[-180px] w-[560px] h-[560px] bg-cyan-300/10 blur-[190px] rounded-full" />
       </div>
 
-      {/* Divider */}
-      <div className="border-t border-white/10 mt-16 relative z-10"></div>
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-10"
+      >
+        <div className="grid md:grid-cols-3 gap-12">
+          {/* Brand */}
+          <motion.div variants={fadeUp}>
+            <Link href="/" className="inline-flex items-baseline gap-1 text-3xl font-bold">
+              Click<span className="text-cyan-400">On</span>
+              Add<span className="text-cyan-400">zz.</span>
+            </Link>
 
-      {/* Copyright */}
-      <p className="text-center text-white/50 mt-6 relative z-10">
-        &copy; {new Date().getFullYear()} ClickOnAddzz. All rights reserved.
-      </p>
+            <p className="mt-4 text-white/70 leading-relaxed max-w-md">
+              Performance marketing agency helping brands grow with strategy,
+              data, and creativity.
+            </p>
+
+            <div className="flex gap-3 mt-7">
+              {socials.map(({ href, label, Icon }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  whileHover={{ y: -3, scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative p-3 rounded-full border border-white/10 bg-white/5
+                             text-white/80 hover:text-cyan-300 hover:border-cyan-400/30
+                             shadow-[0_0_18px_rgba(34,211,238,0.18)]
+                             hover:shadow-[0_0_34px_rgba(34,211,238,0.35)]
+                             transition"
+                >
+                  {/* tiny hover glow */}
+                  <span className="pointer-events-none absolute -inset-4 rounded-full bg-cyan-400/10 blur-xl opacity-0 group-hover:opacity-100 transition" />
+                  <span className="relative">
+                    <Icon />
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Quick Links */}
+          <motion.div variants={fadeUp}>
+            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+
+            <ul className="space-y-2 text-white/70">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="group inline-flex items-center gap-2 hover:text-cyan-300 transition"
+                  >
+                    <span className="h-[2px] w-0 bg-cyan-400/70 transition-all duration-300 group-hover:w-5" />
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      {l.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Newsletter */}
+          <motion.div variants={fadeUp}>
+            <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
+
+            <p className="text-white/70 mb-5">
+              Subscribe to get our latest news and updates directly in your inbox.
+            </p>
+
+            <form
+              onSubmit={onSubscribe}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-4"
+            >
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  required
+                  placeholder="Your email"
+                  className="w-full px-4 py-3 rounded-xl bg-white/[0.92] text-[#0b1220]
+                             placeholder:text-[#0b1220]/50 outline-none
+                             focus:ring-2 focus:ring-cyan-300/40"
+                />
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-6 py-3 rounded-xl bg-cyan-400 text-black font-semibold
+                             shadow-[0_14px_35px_rgba(34,211,238,0.20)]
+                             hover:bg-cyan-300 transition whitespace-nowrap"
+                >
+                  Subscribe
+                </motion.button>
+              </div>
+
+              <p className="mt-3 text-xs text-white/50">
+                No spam. Unsubscribe anytime.
+              </p>
+            </form>
+          </motion.div>
+        </div>
+
+        {/* Divider */}
+        <div className="mt-14 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* Bottom Bar */}
+        <div className="mt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-white/50 text-sm">
+            &copy; {year} ClickOnAddzz. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-6 text-sm text-white/55">
+            <Link href="/privacy" className="hover:text-cyan-300 transition">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-cyan-300 transition">
+              Terms
+            </Link>
+          </div>
+        </div>
+      </motion.div>
     </footer>
   );
 };
