@@ -972,7 +972,7 @@ export default function ServiceDetailPage() {
               type="button"
             >
               <span className="absolute -inset-3 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition" />
-              <span className="relative">👉 {data.ctaText}</span>
+               <a href="/contact-us"><span className="relative">👉 {data.ctaText}</span></a>
             </motion.button>
           </motion.div>
         </motion.div>
