@@ -144,7 +144,7 @@ Worldwide
        
 
      
-<section className="relative max-w-7xl mx-auto px-6 py-24">
+<section className="relative max-w-7xl mx-auto px-6  hidden md:block py-24">
   <h2 className="text-4xl font-bold text-center mb-14 text-white">
     Our <span className="text-cyan-400">Work</span>
   </h2>
