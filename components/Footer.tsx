@@ -18,7 +18,7 @@ const Footer = () => {
         <div>
            <Link href="/" className="text-3xl p-2 font-bold text-white justify-self-start">
              Click<span className="text-cyan-400">On</span>
-             Add<span className="text-cyan-400">s.</span>
+             Add<span className="text-cyan-400">zz.</span>
           </Link>
           <p className="text-white/70 leading-relaxed">
             Performance marketing agency helping brands grow with strategy, data, and creativity.

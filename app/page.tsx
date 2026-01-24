@@ -88,7 +88,7 @@ export default function Home() {
     {/* Box 2 */}
     <div className=" p-6 h-50 w-50 border rounded-xl shadow-lg hover:scale-105 transition transform">
  
-  <h1 className="text-4xl font-semibold mt-13"> 300+</h1>
+  <h1 className="text-4xl font-semibold mt-13"> 200M+</h1>
       <p className="text-gray-300 mt-1">
        People Reached
          through Campaigns
@@ -97,7 +97,7 @@ export default function Home() {
 
     {/* Box 3 */}
     <div className="  p-6  h-50 w-50 border rounded-xl shadow-lg hover:scale-105 transition transform">
-      <h3 className="text-4xl font-semibold mt-13" > 250M+</h3>
+      <h3 className="text-4xl font-semibold mt-13" > 250+</h3>
       <p className="text-gray-300 mt-1">
        Customers Served
 Worldwide

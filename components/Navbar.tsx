@@ -2,45 +2,85 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
+
+  const linkClass = (path: string) =>
+    `relative transition ${
+      isActive(path)
+        ? "text-cyan-400"
+        : "text-gray-300 hover:text-indigo-400"
+    }`;
 
   return (
-  <header className="sticky top-0 z-50
-  bg-gradient-to-r from-[#0b1220] via-[#0e1628] to-[#0b1220]
-  backdrop-blur-md border-b border-white/5">
-
-      <div className="bg-gradient-to-r 
-from-[#0b1220] 
-via-[#0e1628] 
-to-[#0b1220]
-backdrop-blur-md 
-border-b border-white/5
-">
-
+    <header
+      className="sticky top-0 z-50
+      bg-gradient-to-r from-[#0b1220] via-[#0e1628] to-[#0b1220]
+      backdrop-blur-md border-b border-white/5"
+    >
+      <div
+        className="bg-gradient-to-r 
+        from-[#0b1220] 
+        via-[#0e1628] 
+        to-[#0b1220]
+        backdrop-blur-md 
+        border-b border-white/5"
+      >
         {/* Main Bar */}
         <div className="max-w-7xl mx-auto px-2 py-6 grid grid-cols-3 items-center">
-
-          {/* Left: Logo */}
-          <Link href="/" className="text-2xl font-bold text-white justify-self-start">
-             Click<span className="text-cyan-400">On</span>
-             Add<span className="text-cyan-400">s.</span>
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-2xl font-bold text-white justify-self-start"
+          >
+            Click<span className="text-cyan-400">On</span>
+            Ad<span className="text-cyan-400">zz.</span>
           </Link>
 
-          {/* Center: Menu */}
-          <nav className="hidden md:flex justify-self-center gap-15 text-lg text-gray-300 font-medium">
-            <Link href="/" className="hover:text-indigo-400 transition">Home</Link>
-            <Link href="/about" className="hover:text-indigo-400 transition">About</Link>
-            <Link href="/services" className="hover:text-indigo-400 transition">Services</Link>
-            <Link href="/contact-us" className="hover:text-indigo-400 transition">Contact</Link>
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex justify-self-center gap-10 text-lg font-medium">
+            <Link href="/" className={linkClass("/")}>
+              Home
+              {isActive("/") && (
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-cyan-400 rounded-full" />
+              )}
+            </Link>
+
+            <Link href="/about" className={linkClass("/about")}>
+              About
+              {isActive("/about") && (
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-cyan-400 rounded-full" />
+              )}
+            </Link>
+
+            <Link href="/services" className={linkClass("/services")}>
+              Services
+              {isActive("/services") && (
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-cyan-400 rounded-full" />
+              )}
+            </Link>
+
+            <Link href="/contact-us" className={linkClass("/contact")}>
+              Contact
+              {isActive("/contact") && (
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-cyan-400 rounded-full" />
+              )}
+            </Link>
           </nav>
 
-          {/* Right: CTA + Mobile Button */}
+          {/* Right CTA */}
           <div className="justify-self-end flex items-center gap-3">
             <Link
-              href="/contact"
+              href="/contact-us"
               className="hidden md:inline-flex px-5 py-2 rounded-xl
                          bg-gradient-to-r from-cyan-500 to-blue-600
                          text-white shadow-lg shadow-cyan-500/20
@@ -50,7 +90,7 @@ border-b border-white/5
             </Link>
 
             <button
-              className="md:hidden text-white"
+              className="md:hidden fixed right-5 text-white"
               onClick={() => setOpen(!open)}
             >
               {open ? <X size={26} /> : <Menu size={26} />}
@@ -62,14 +102,40 @@ border-b border-white/5
         {open && (
           <div className="md:hidden border-t border-white/10 bg-[#0b1220]">
             <nav className="flex flex-col gap-4 px-6 py-4 text-gray-300">
-              <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-              <Link href="/about" onClick={() => setOpen(false)}>About</Link>
-              <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
-              <Link href="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link>
-              <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className={isActive("/") ? "text-cyan-400" : ""}
+              >
+                Home
+              </Link>
+
+              <Link
+                href="/about"
+                onClick={() => setOpen(false)}
+                className={isActive("/about") ? "text-cyan-400" : ""}
+              >
+                About
+              </Link>
+
+              <Link
+                href="/services"
+                onClick={() => setOpen(false)}
+                className={isActive("/services") ? "text-cyan-400" : ""}
+              >
+                Services
+              </Link>
 
               <Link
                 href="/contact"
+                onClick={() => setOpen(false)}
+                className={isActive("/contact-us") ? "text-cyan-400" : ""}
+              >
+                Contact
+              </Link>
+
+              <Link
+                href="/contact-us"
                 onClick={() => setOpen(false)}
                 className="mt-2 px-5 py-2 rounded-xl
                            bg-gradient-to-r from-cyan-500 to-blue-600

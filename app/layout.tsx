@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wisoft Solutions",
+  title: "ClickOnAddzz.",
   description: "Performance-driven digital growth solutions",
 };
 
@@ -55,9 +55,9 @@ export default function RootLayout({
         {/* Floating contact buttons (Call / WhatsApp / Chatbot / Enquiry) */}
         <FloatingActions
           phone="+919187154521"
-          whatsapp="+919187154521"
+          whatsapp="+919019597056"
           whatsappMessage="Hi! I want a free consultation."
-          enquiryHref="/contact"
+          enquiryHref="/contact-us"
         />
 
         {/* Chatbot widget (opens via event) */}
