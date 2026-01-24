@@ -105,12 +105,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Floating action buttons */}
-      <div className="fixed right-6 bottom-10 z-50 flex flex-col gap-3">
-        <FloatingBtn label="Call">📞</FloatingBtn>
-        <FloatingBtn label="Send">✈️</FloatingBtn>
-        <FloatingBtn label="Chat">💬</FloatingBtn>
-      </div>
+       
 
       <section className="relative max-w-7xl mx-auto px-6 py-24">
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">

@@ -3,20 +3,13 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaPhoneAlt,
-  FaWhatsapp,
-  FaRobot,
-  FaComments,
-  FaTimes,
-} from "react-icons/fa";
+import { FaPhoneAlt, FaWhatsapp, FaRobot, FaComments, FaTimes } from "react-icons/fa";
 
 type FloatingActionsProps = {
-  phone?: string; // "+919187154521"
-  whatsapp?: string; // "+919187154521"
-  whatsappMessage?: string; // "Hi, I want to know more..."
-  chatbotHref?: string; // "/chat" or "#"
-  enquiryHref?: string; // "/contact"
+  phone?: string;
+  whatsapp?: string;
+  whatsappMessage?: string;
+  enquiryHref?: string;
 };
 
 const pop = {
@@ -55,12 +48,12 @@ function FabButton({
   const [hover, setHover] = useState(false);
 
   const cls =
-    "group relative h-12 w-12 rounded-full border border-white/10 bg-white/[0.06] backdrop-blur-xl " +
+    "group relative h-14 w-14 rounded-full border border-white/10 bg-cyan-400 " +
     "shadow-[0_16px_40px_rgba(0,0,0,0.45)] " +
-    "hover:border-cyan-400/40 hover:bg-white/[0.10] transition";
+    "hover:border-cyan-400/40 hover:bg-cyan-300 transition";
 
   const inner =
-    "absolute -inset-3 rounded-full bg-cyan-400/15 blur-xl opacity-0 group-hover:opacity-100 transition";
+    "absolute -inset-3 rounded-full bg-cyan-400/30 blur-xl opacity-0 group-hover:opacity-100 transition";
 
   const content = (
     <button
@@ -72,17 +65,13 @@ function FabButton({
       type="button"
     >
       <span className={inner} />
-      <span className="relative flex h-full w-full items-center justify-center text-lg text-white/90">
+      <span className="relative flex h-full w-full items-center justify-center text-xl text-black">
         {children}
       </span>
 
       <AnimatePresence>
         {hover ? (
-          <motion.span
-            initial={{ opacity: 0, x: 6 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 6 }}
-          >
+          <motion.span initial={{ opacity: 0, x: 6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 6 }}>
             <Tooltip text={label} />
           </motion.span>
         ) : null}
@@ -91,7 +80,6 @@ function FabButton({
   );
 
   if (href) {
-    // Use <a> for tel/wa + external
     const isExternal = href.startsWith("http") || href.startsWith("tel:");
     if (isExternal) {
       return (
@@ -100,7 +88,11 @@ function FabButton({
         </a>
       );
     }
-    return <Link href={href} className="block">{content}</Link>;
+    return (
+      <Link href={href} className="block">
+        {content}
+      </Link>
+    );
   }
 
   return content;
@@ -110,7 +102,6 @@ export default function FloatingActions({
   phone = "+919187154521",
   whatsapp = "+919187154521",
   whatsappMessage = "Hi! I want to know more about your services.",
-  chatbotHref = "/contact", // change to your chatbot route if you have
   enquiryHref = "/contact",
 }: FloatingActionsProps) {
   const [open, setOpen] = useState(false);
@@ -118,14 +109,12 @@ export default function FloatingActions({
   const waLink = useMemo(() => {
     const num = whatsapp.replace(/[^\d+]/g, "");
     const msg = encodeURIComponent(whatsappMessage);
-    // wa.me requires number without +
     const waNum = num.replace("+", "");
     return `https://wa.me/${waNum}?text=${msg}`;
   }, [whatsapp, whatsappMessage]);
 
   return (
     <div className="fixed right-6 bottom-8 z-[60] flex flex-col items-end gap-3">
-      {/* small stack */}
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -149,8 +138,15 @@ export default function FloatingActions({
               </FabButton>
             </motion.div>
 
-            <motion.div variants={item} initial="hidden" animate="visible" transition={{ delay: 0.10 }}>
-              <FabButton label="Chatbot" href={chatbotHref}>
+            {/* ✅ OPEN CHAT WIDGET */}
+            <motion.div variants={item} initial="hidden" animate="visible" transition={{ delay: 0.1 }}>
+              <FabButton
+                label="Chatbot"
+                onClick={() => {
+                  window.dispatchEvent(new Event("open-chat"));
+                  setOpen(false);
+                }}
+              >
                 <FaRobot />
               </FabButton>
             </motion.div>
@@ -164,12 +160,8 @@ export default function FloatingActions({
         ) : null}
       </AnimatePresence>
 
-      {/* main toggle */}
       <motion.div whileTap={{ scale: 0.96 }}>
-        <FabButton
-          label={open ? "Close" : "Contact"}
-          onClick={() => setOpen((s) => !s)}
-        >
+        <FabButton label={open ? "Close" : "Contact"} onClick={() => setOpen((s) => !s)}>
           {open ? <FaTimes /> : <FaComments />}
         </FabButton>
       </motion.div>
