@@ -127,7 +127,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/contact"
+                href="/contact-us"
                 onClick={() => setOpen(false)}
                 className={isActive("/contact-us") ? "text-cyan-400" : ""}
               >

@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function escapeHtml(str = "") {
   return str
     .replaceAll("&", "&amp;")
@@ -16,17 +14,8 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    const {
-      firstName,
-      lastName,
-      email,
-      company,
-      phone,
-      service,
-      message,
-    } = body;
+    const { firstName, lastName, email, company, phone, service, message } = body;
 
-    // Basic validation
     if (!firstName || !lastName || !email) {
       return NextResponse.json(
         { ok: false, message: "Missing required fields." },
@@ -34,16 +23,19 @@ export async function POST(req) {
       );
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
     const to = process.env.RESEND_TO;
     const from = process.env.RESEND_FROM;
-    const apiKey = process.env.RESEND_API_KEY;
 
-    if (!to || !from || !apiKey) {
+    if (!apiKey || !to || !from) {
       return NextResponse.json(
         { ok: false, message: "Server email config missing." },
         { status: 500 }
       );
     }
+
+    // ✅ create here (NOT top-level)
+    const resend = new Resend(apiKey);
 
     const subject = `New Contact Form: ${firstName} ${lastName}`;
 
@@ -55,9 +47,7 @@ export async function POST(req) {
         <p><b>Company:</b> ${escapeHtml(company || "-")}</p>
         <p><b>Phone:</b> ${escapeHtml(phone || "-")}</p>
         <p><b>Service:</b> ${escapeHtml(service || "-")}</p>
-        <p><b>Message:</b><br/>
-          ${escapeHtml(message || "-").replaceAll("\n", "<br/>")}
-        </p>
+        <p><b>Message:</b><br/>${escapeHtml(message || "-").replaceAll("\n", "<br/>")}</p>
         <hr/>
         <small>Sent from your website contact form</small>
       </div>
