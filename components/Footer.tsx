@@ -130,8 +130,7 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={fadeUp}>
             <Link href="/" className="inline-flex items-baseline gap-1 text-3xl font-bold">
-              Click<span className="text-cyan-400">On</span>
-              Add<span className="text-cyan-400">zz.</span>
+             <img src="/logo.png" alt="logo" className="w-50" />
             </Link>
 
             <p className="mt-4 text-white/70 leading-relaxed max-w-md">

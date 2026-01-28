@@ -42,8 +42,7 @@ const Navbar = () => {
             href="/"
             className="text-2xl font-bold text-white justify-self-start"
           >
-            Click<span className="text-cyan-400">On</span>
-            Ad<span className="text-cyan-400">zz.</span>
+          <img src="/logo.png" alt="logo" className="w-50" />
           </Link>
 
           {/* Desktop Menu */}
