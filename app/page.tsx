@@ -54,12 +54,12 @@ export default function Home() {
                 </div>
 
                 <div className="relative   max-w-7xl mx-auto px-5  lg:px-25  py-5 lg:py-20 text-centr">
-            <h1 className="text-3xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
               Dynamic Digital <br /> Marketing Company <br />
               <span className="text-cyan-400">You Need to Succeed</span>
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="mt-6 text-xl md:text-xl text-gray-300 max-w-3xl mx-auto">
               We build <span className="text-white font-medium">data-driven digital marketing strategies</span>{" "}
               that deliver  <br />transformational growth and exceptional results — 
               designed to  <br />lower your acquisition costs.
