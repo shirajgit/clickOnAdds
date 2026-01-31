@@ -6,11 +6,11 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "Why are digital marketing services important for my business in Bangalore?",
-    a: "As one of the fastest-growing cities in India, Bangalore offers immense opportunities for businesses. Digital marketing helps you tap into this potential by targeting specific audiences and generating qualified leads. Wisoft Solutionscombines AI-powered insights, creative strategies, and real-time data to help businesses like yours grow.",
+    a: "As one of the fastest-growing cities in India, Bangalore offers immense opportunities for businesses. Digital marketing helps you tap into this potential by targeting specific audiences and generating qualified leads. ClickOnAdzz Solutionscombines AI-powered insights, creative strategies, and real-time data to help businesses like yours grow.",
   },
   {
     q: "How do I choose the right digital marketing agency in Bangalore?",
-    a: "Look for a digital marketing agency that not only understands your goals but also has a proven track record of delivering measurable results. Wisoft Solutionshas worked with industry leaders like Damac, EMAAR, and BITS Pilani to drive meaningful business growth.",
+    a: "Look for a digital marketing agency that not only understands your goals but also has a proven track record of delivering measurable results. ClickOnAdzz Solutionshas worked with industry leaders like Damac, EMAAR, and BITS Pilani to drive meaningful business growth.",
   },
   {
     q: "How can digital marketing boost my revenue?",
@@ -18,14 +18,14 @@ const faqs = [
   },
   {
     q: "How do I trust digital marketing agencies for my business?",
-    a: "Trust is built on transparency and results. At Wisoft Solutions, we deliver measurable KPIs, transparent reporting, and AI-driven optimisation to ensure your marketing budget delivers the best possible results.",
+    a: "Trust is built on transparency and results. At ClickOnAdzz Solutions, we deliver measurable KPIs, transparent reporting, and AI-driven optimisation to ensure your marketing budget delivers the best possible results.",
   },
 
   /* 🔹 NEW QUESTIONS ADDED BELOW */
 
   {
     q: "What is a digital solutions agency?",
-    a: "A digital solution agency in Bangalore helps businesses grow by combining strategy, creativity, and technology. Instead of offering just one service, such an agency builds full-spectrum digital ecosystems, from website design and SEO to social media, automation, and analytics. At Wisoft Solutions, we go beyond campaigns; we create connected digital experiences that attract the right audience, build trust, and drive measurable revenue growth.",
+    a: "A digital solution agency in Bangalore helps businesses grow by combining strategy, creativity, and technology. Instead of offering just one service, such an agency builds full-spectrum digital ecosystems, from website design and SEO to social media, automation, and analytics. At ClickOnAdzz Solutions, we go beyond campaigns; we create connected digital experiences that attract the right audience, build trust, and drive measurable revenue growth.",
   },
   {
     q: "Which digital marketing tool is best?",
@@ -37,15 +37,15 @@ const faqs = [
   },
   {
     q: "What are the 5 advantages of digital marketing?",
-    a: "Working with an experienced SEO and digital marketing agency offers multiple benefits: precise targeting, measurable performance, cost efficiency, deep customer insights, and scalability. At Wisoft Solutions, every strategy is designed to bring clarity, accountability, and long-term business results.",
+    a: "Working with an experienced SEO and digital marketing agency offers multiple benefits: precise targeting, measurable performance, cost efficiency, deep customer insights, and scalability. At ClickOnAdzz Solutions, every strategy is designed to bring clarity, accountability, and long-term business results.",
   },
   {
     q: "Why does every business need a digital marketing strategy?",
-    a: "Every business operates in a digital-first world. Without a defined strategy, brands risk losing visibility, consistency, and customer trust. A strategic partner like Wisoft aligns business goals with the right channels and messaging, ensuring SEO, content, and paid campaigns work as one connected system.",
+    a: "Every business operates in a digital-first world. Without a defined strategy, brands risk losing visibility, consistency, and customer trust. A strategic partner like ClickOnAdzz aligns business goals with the right channels and messaging, ensuring SEO, content, and paid campaigns work as one connected system.",
   },
   {
     q: "How much does a digital marketing agency cost per month?",
-    a: "The cost of hiring a digital marketing company in Bengaluru depends on your goals, target market, and service scope. For small to mid-sized businesses, monthly retainers typically range from ₹50,000 to ₹3,00,000. At Wisoft, pricing is tailored to your growth stage — you pay for outcomes, not just deliverables.",
+    a: "The cost of hiring a digital marketing company in Bengaluru depends on your goals, target market, and service scope. For small to mid-sized businesses, monthly retainers typically range from ₹50,000 to ₹3,00,000. At ClickOnAdzz, pricing is tailored to your growth stage — you pay for outcomes, not just deliverables.",
   },
 ];
 

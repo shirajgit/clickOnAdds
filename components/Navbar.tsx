@@ -36,13 +36,20 @@ const Navbar = () => {
         border-b border-white/5"
       >
         {/* Main Bar */}
-        <div className="max-w-7xl mx-auto  px-2 py-6 grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
+
           {/* Logo */}
           <Link
             href="/"
  
           >
-          <img src="/logo.png" alt="logo" className=" w-51" />
+      <img
+  src="/logo.png"
+  alt="logo"
+  className="h-10 sm:h-10 md:h-10 w-auto"
+ />
+
+
           </Link>
 
           {/* Desktop Menu */}
