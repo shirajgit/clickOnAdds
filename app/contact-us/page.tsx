@@ -90,7 +90,7 @@ export default function ContactPage() {
 
       {/* Locations + map */}
       <section className="relative max-w-7xl mx-auto px-6 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        <div className="  gap-10 items-stretch">
           {/* LEFT – LOCATIONS */}
           <div className="space-y-6">
             {[
@@ -98,24 +98,9 @@ export default function ContactPage() {
                 country: "India",
                 address:
                   "Office - 001, Ground Floor, Workafella, No 77/A, Industrial Layout, Koramangala, Bengaluru, Karnataka 560095",
-                phone: "+91 4466384745",
-              },
-              {
-                country: "United Arab Emirates",
-                address:
-                  "P.O. Box: 237159, Office M-38, Curve Building, Sheikh Zayed Road, Dubai, UAE",
-                phone: "+971 4 321 0710",
-              },
-              {
-                country: "Saudi Arabia",
-                address: "Office-163, Al-Wurud, Riyadh, KSA",
-                phone: "+971 4 321 0710",
-              },
-              {
-                country: "United States",
-                address: "101 S Garland Avenue Ste108, Orlando",
-                phone: "+1 407 000 0000",
-              },
+                phone: "+91 8105369922",
+              } 
+               
             ].map((loc, i) => (
               <motion.div
                 key={i}
@@ -123,15 +108,15 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, ease: "easeOut", delay: i * 0.04 }}
-                className="group rounded-2xl bg-white/[0.03] backdrop-blur-xl
+                className="group rounded-2xl bg-white/[0.03] backdrop-blur-xl m-10
                      border border-white/10 p-6
-                     hover:border-cyan-400/40
+                     hover:border-cyan-400/40 mb-10
                      hover:shadow-[0_0_40px_rgba(34,211,238,0.12)]
                      transition"
               >
-                <h3 className="text-lg font-semibold mb-2">{loc.country}</h3>
+                <h3 className="text-2xl font-semibold mb-2">{loc.country}</h3>
 
-                <p className="text-white/65 text-sm leading-relaxed mb-4">{loc.address}</p>
+                <p className="text-white/65 text-xl leading-relaxed mb-4">{loc.address}</p>
 
                 <div className="flex items-center justify-between">
                   <span className="text-white/70 text-sm">{loc.phone}</span>
