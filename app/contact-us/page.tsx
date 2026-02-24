@@ -94,7 +94,7 @@ export default function ContactPage() {
           {/* LEFT – LOCATIONS */}
           <div className="space-y-6">
             {[
-              {
+              { 
                 country: "India",
                 address:
                   "Office - 001, Ground Floor, Workafella, No 77/A, Industrial Layout, Koramangala, Bengaluru, Karnataka 560095",
