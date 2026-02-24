@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import {
-  motion,
-  AnimatePresence,
+import {  motion,
   useMotionValue,
   useSpring,
   useTransform,
@@ -39,8 +37,7 @@ function GlowLine() {
 }
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
+  const year = new Date().getFullYear() 
   const socials = [
     {
       href: "https://www.facebook.com/people/Clickonadzz/61584464079686/",
@@ -230,8 +227,7 @@ export default function Footer() {
                     type="email"
                     required
                     placeholder="Your email"
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.92] text-[#0b1220]
-                               placeholder:text-[#0b1220]/50 outline-none
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.92] text-[#0b1220]  placeholder:text-[#0b1220]/50 outline-none
                                focus:ring-2 focus:ring-cyan-300/40"
                   />
 

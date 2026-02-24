@@ -5,6 +5,7 @@ import Hero3D from "@/components/Hero3D";
 import Navbar from "@/components/Navbar";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import Image from "next/image";
+import Link from "next/link";
 import {
   FaGoogle,
   FaAmazon,
@@ -55,7 +56,7 @@ export default function Home() {
 
                 <div className="relative   max-w-7xl mx-auto px-5  lg:px-25  py-5 lg:py-20 text-centr">
             <h1 className="text-3xl md:text-6xl font-bold leading-tight">
-              Dynamic Digital <br /> Marketing Company <br />
+              Dynamic Performance<br /> Marketing Company <br />
               <span className="text-cyan-400">You Need to Succeed</span>
             </h1>
 
@@ -66,19 +67,19 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex  gap-4 flex-wrap">
-              <a
+              <Link
                 href="/contact-us"
                 className="px-6 py-3 rounded-xl bg-cyan-500 text-white font-medium shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
               >
                 Get Free Consultation
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/services"
                 className="px-6 py-3 rounded-xl border border-white/20 text-gray-200 hover:bg-white/5 transition"
               >
                 Our Services
-              </a>
+              </Link>
             </div>
           </div>
           
@@ -167,13 +168,13 @@ Worldwide
           Data-driven campaigns designed to increase reach, engagement,
           and conversions.
         </p>
-       <a href="/services">
+       <Link href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
           See Our Services
 
         </button>
-        </a>
+        </Link>
       </div>
     </div>
 
@@ -192,13 +193,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Strong teamwork and communication to deliver scalable solutions.
         </p>
-        <a href="/services">
+        <Link href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
           See Our Services
 
         </button>
-        </a>
+        </Link>
       </div>
     </div>
 
@@ -217,13 +218,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Fast, responsive, and scalable websites built with modern tech.
         </p>
-       <a href="/services">
+       <Link href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
           See Our Services
 
         </button>
-        </a>
+        </Link>
       </div>
     </div>
 
@@ -242,13 +243,13 @@ Worldwide
         <p className="text-white/80 mb-6">
           Strategic planning and execution to scale your business faster.
         </p>
-        <a href="/services">
+        <Link href="/services">
         <button className="px-6 py-2 rounded-full border border-cyan-400 text-cyan-400
                            hover:bg-cyan-400 hover:text-black transition">
           See Our Services
 
         </button>
-        </a>
+        </Link>
       </div>
     </div>
 
@@ -315,7 +316,7 @@ Worldwide
                       hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.3)]">
         <p className="text-lg leading-relaxed text-white/70 px-10
                       group-hover:text-white/90 transition">
-          We transform your social media presence into a powerful customer
+          We transform your social media presence into Link powerful customer
           acquisition engine. Our focus is on data-driven campaigns that
           generate measurable results.
         </p>
@@ -338,7 +339,7 @@ Worldwide
 
     </div>
     <div className="mt-16 flex text-cnter items-center justify-center">
-  <a
+  <Link
     href="/services"
     className="group inline-flex items-center gap-2
                px-8 py-3 rounded-full
@@ -349,7 +350,7 @@ Worldwide
   >
     Learn More
     <span className="transition-transform group-hover:translate-x-1">→</span>
-  </a>
+  </Link>
 </div>
   </div>
 </section>
@@ -407,7 +408,7 @@ Worldwide
         </h1>
 
         <div className="mt-10">
-          <a href="/contact-us">
+          <Link href="/contact-us">
           <button
             className="
               bg-sky-500 hover:bg-sky-600
@@ -418,7 +419,7 @@ Worldwide
             "
           >
             Contact Us
-          </button></a>
+          </button></Link>
         </div>
       </div>
     </section>
